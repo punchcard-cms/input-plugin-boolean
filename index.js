@@ -6,8 +6,29 @@
  *
  * A simple boolean input type
  */
-const validation = require('./lib/validation.js');
+const clone = require('lodash/clonedeep');
+const inpugCheckbox = require('input-plugin-checkbox');
 
+const utils = require('./lib/utils');
+
+// clone plugins for each input
+const boolean = clone(inpugCheckbox);
+
+// make replacements in html
+boolean.html = boolean.html.replace(/checkbox\./g, 'boolean.');
+
+// replace options
+boolean.inputs.checkbox.options = [
+  {
+    label: 'true',
+    value: '1',
+  },
+];
+
+// grab javascripts
+const plugins = [boolean];
+const validation = utils.validation(plugins);
+const scripts = utils.scripts(plugins);
 /**
  * Single Boolean Input Plugin
  * @module booleanInputPlugin
@@ -15,22 +36,10 @@ const validation = require('./lib/validation.js');
 module.exports = {
   name: 'Boolean',
   description: 'A simple boolean input type',
-  validation: {
-    booleanValidation: validation,
-  },
+  validation,
+  scripts,
   inputs: {
-    boolean: {
-      validation: {
-        function: 'booleanValidation',
-        on: 'blur',
-      },
-      label: 'A true or false statement goes here',
-      placeholder: 'Boolean',
-      type: 'checkbox',
-      settings: {
-        empty: true,
-      },
-    },
+    boolean: boolean.inputs.checkbox,
   },
-  html: '<label for="{{boolean.id}}">{{boolean.label}}</label><input type="{{boolean.type}}" id="{{boolean.id}}" name="{{boolean.name}}" value="{{boolean.value}}" />',
+  html: boolean.html,
 };
