@@ -6,40 +6,35 @@
  *
  * A simple boolean input type
  */
-const clone = require('lodash/clonedeep');
-const inpugCheckbox = require('input-plugin-checkbox');
+const validation = require('./lib/validation.js');
 
-const utils = require('./lib/utils');
-
-// clone plugins for each input
-const boolean = clone(inpugCheckbox);
-
-// make replacements in html
-boolean.html = boolean.html.replace(/checkbox\./g, 'boolean.');
-
-// replace options
-boolean.inputs.checkbox.options = [
-  {
-    label: 'true',
-    value: '1',
-  },
-];
-
-// grab javascripts
-const plugins = [boolean];
-const validation = utils.validation(plugins);
-const scripts = utils.scripts(plugins);
 /**
  * Single Boolean Input Plugin
  * @module booleanInputPlugin
  */
 module.exports = {
-  name: 'Boolean',
-  description: 'A simple boolean input type',
-  validation,
-  scripts,
-  inputs: {
-    boolean: boolean.inputs.checkbox,
+  name: 'boolean',
+  description: 'A boolean input type',
+  validation: {
+    booleanValidation: validation,
   },
-  html: boolean.html,
+  inputs: {
+    boolean: {
+      validation: {
+        function: 'booleanValidation',
+        on: 'change',
+      },
+      type: 'checkbox',
+      label: 'Select from the following',
+      options: [
+        { label: 'true',
+          value: '1',
+        },
+      ],
+      settings: {
+        empty: false,
+      },
+    },
+  },
+  html: '{% for option in boolean.options %}<label for="{{boolean.id}}--{{loop.index}}"><input type="{{boolean.type}}" name="{{boolean.name}}" id="{{boolean.id}}--{{loop.index}}" value="{{option.value}}" {% if option.value in boolean.value %}checked{% endif %}>{{option.label}}</label>{% endfor %}',
 };
