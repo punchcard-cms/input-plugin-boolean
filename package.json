@@ -20,7 +20,7 @@
   "contributors": [
     "Rachel White <whiter@us.ibm.com>"
   ],
-  "license": "Apache-2",
+  "license": "Apache-2.0",
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.14.0",
