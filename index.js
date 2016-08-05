@@ -27,7 +27,8 @@ module.exports = {
       type: 'checkbox',
       label: 'Select from the following',
       options: [
-        { label: 'true',
+        {
+          label: 'true',
           value: '1',
         },
       ],
