@@ -18,14 +18,14 @@
   "contributors": [
     "Rachel White <whiter@us.ibm.com>"
   ],
-  "license": "Apache-2",
+  "license": "Apache-2.0",
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.14.0",
     "eslint": "^2.10.0",
     "eslint-config-punchcard": "^1.0.1",
     "nyc": "^6.0.0",
-    "punchcard-content-types": "^0.1.0",
+    "punchcard-shared-tests": "^1.0.2",
     "tap-diff": "^0.1.1"
   },
   "engines": {

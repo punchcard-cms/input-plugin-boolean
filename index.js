@@ -13,8 +13,8 @@ const validation = require('./lib/validation.js');
  * @module booleanInputPlugin
  */
 module.exports = {
-  name: 'Boolean',
-  description: 'A simple boolean input type',
+  name: 'boolean',
+  description: 'A boolean input type',
   validation: {
     booleanValidation: validation,
   },
@@ -22,15 +22,20 @@ module.exports = {
     boolean: {
       validation: {
         function: 'booleanValidation',
-        on: 'blur',
+        on: 'change',
       },
-      label: 'A true or false statement goes here',
-      placeholder: 'Boolean',
       type: 'checkbox',
+      label: 'Select from the following',
+      options: [
+        {
+          label: 'true',
+          value: '1',
+        },
+      ],
       settings: {
-        empty: true,
+        empty: false,
       },
     },
   },
-  html: '<label for="{{boolean.id}}">{{boolean.label}}</label><input type="{{boolean.type}}" id="{{boolean.id}}" name="{{boolean.name}}" value="{{boolean.value}}" />',
+  html: '{% for option in boolean.options %}<label for="{{boolean.id}}--{{loop.index}}"><input type="{{boolean.type}}" name="{{boolean.name}}" id="{{boolean.id}}--{{loop.index}}" value="{{option.value}}" {% if option.value in boolean.value %}checked{% endif %}>{{option.label}}</label>{% endfor %}',
 };
