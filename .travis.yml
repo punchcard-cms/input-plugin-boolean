@@ -15,5 +15,5 @@ branches:
   - /^v\d+\.\d+\.\d+$/
 notifications:
   email: false
-  slack:
+slack:
     secure: lUSONnHG9jcCXj0LM2M8JSv1LQpMOaUTqUCMjxYFYED2woclpsRFeiEFk6BpxJXEPqGByh6u/pUQkjEZSiTQHEkU0H8RTHTyUBIh3D6XDgdMeSIAQ+BWExq+HVqsmj5RPU9l3HT8iIfSzWkiaVMPlFR8GNxav83Xo6P+MINc+YO2AWI3O7M5aWognIj3Kdz/NdjD4y56xRTKk+BqVeucAFg1InnsRMLn5/k9FBYJqnnRdH3Y2OqkKtot1+4QmXQD63ub/TsmYj4oKbU6aUdG8QhWwaRZb8scygjj2P4hXHsqRfqnBQ9VCj17rehw8Q/9dS9x79CfStf2ZL9PxpJXbF3aF2DCvEe2M6YcOYifc0xOnn67p6mIN5sAJDslT58rLI4mz7y/4dWPKk3lCXJxaEfhHSkNRZOOe//j/TWvZs7fJkFQ/yk4YhvcSYyRvfeP1G6uE/mfVFw2HyaRCZypmoZoCfNEQLMciw2Z0qyKVaFCXw2sdA8ocfwRtpbv9RDtkD9TMcvcdMUWcq/v/y60t4jqOB2Unyd80P88C3HiAiiITx+c1r2rfAlk218suImff4/PG7vYnXeqEEnWWsAKTBsWG5VUMx7R1qNBuqMkSMHKOM9zUgrnvBtT/1CKzIXei2ZAGeTn1rgdCOgwrUL+ZiyF0CMhwU/YeWhVavwSW7c=
