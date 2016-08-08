@@ -1,6 +1,6 @@
 {
   "name": "input-plugin-boolean",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "A simple boolean input type",
   "main": "index.js",
   "scripts": {
@@ -9,11 +9,13 @@
     "ava": "ava | tap-diff",
     "ava:watch": "ava --watch | tap-diff",
     "nyc": "nyc --all npm run ava",
-    "lint": "eslint index.js lib && eslint -c ./.eslintrc-ava.yml tests"
+    "lint": "eslint index.js lib && eslint -c ./.eslintrc-ava.yml tests",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:punchcard-cms/input-plugin-boolean.git"
+    "url": "https://github.com/punchcard-cms/input-plugin-boolean.git"
   },
   "contributors": [
     "Rachel White <whiter@us.ibm.com>"
@@ -22,10 +24,15 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.14.0",
+    "coveralls": "^2.11.9",
     "eslint": "^2.10.0",
     "eslint-config-punchcard": "^1.0.1",
+    "ghooks": "^1.3.2",
     "nyc": "^6.0.0",
+    "punchcard-commit-msg": "^1.0.0",
+    "punchcard-semantic-release": "^2.0.1",
     "punchcard-shared-tests": "^1.0.2",
+    "semantic-release": "^4.3.5",
     "tap-diff": "^0.1.1"
   },
   "engines": {
@@ -47,5 +54,14 @@
     ],
     "failFast": true,
     "tap": true
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "punchcard-commit-msg"
+    }
+  },
+  "release": {
+    "analyzeCommits": "punchcard-semantic-release/analyze",
+    "generateNotes": "punchcard-semantic-release/notes"
   }
 }
