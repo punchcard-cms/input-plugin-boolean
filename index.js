@@ -37,5 +37,5 @@ module.exports = {
       },
     },
   },
-  html: '{% for option in boolean.options %}<label for="{{boolean.id}}--{{loop.index}}"><input type="{{boolean.type}}" name="{{boolean.name}}" id="{{boolean.id}}--{{loop.index}}" value="{{option.value}}" {% if option.value in boolean.value %}checked{% endif %}>{{option.label}}</label>{% endfor %}',
+  html: '{% for option in boolean.options %}<input type="{{boolean.type}}" name="{{boolean.name}}" id="{{boolean.id}}--{{loop.index}}" value="{{option.value}}" {% if option.value in boolean.value %}checked{% endif %}><label for="{{boolean.id}}--{{loop.index}}">{{option.label}}</label>{% endfor %}',
 };
